@@ -49,10 +49,10 @@ func main() {
 	// 更新
 	var vr sheets.ValueRange
 	now := time.Now().Format("2006/01/02 15:04:05")
-	for i := 0; i < len(resp.Values)-1; i++ {
+	for i := 0; i < len(resp.Values); i++ {
 		vr.Values = append(vr.Values, []interface{}{now})
 	}
-	updateRange := "Sheet1!B2:B"
+	updateRange := "Sheet1!B1:B"
 	if _, err = srv.Spreadsheets.Values.Update(spreadsheetID, updateRange, &vr).ValueInputOption("RAW").Do(); err != nil {
 		log.Fatal(err)
 	}
